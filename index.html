@@ -56,10 +56,12 @@
 </style>
 
 <div class="menu">
-  <button id="HtmlButton1">Mura e fossato</button>
-  <button id="HtmlButton2">Mappa 1</button>
-  <button id="HtmlButton3">Mappa 2</button>
-  <button id="HtmlButton4">Vista Satellitare</button>
+  <button id="HtmlButton1">Mura</button>
+  <button id="HtmlButton2">Castello</button>
+  <button id="HtmlButton3">Mappa 1</button>
+  <button id="HtmlButton4">Mappa 2</button>
+  <button id="HtmlButton5">Ortofoto 1954</button>
+  <button id="HtmlButton6">Vista Satellitare</button>
 </div>
 
 <div id="map"></div>
@@ -68,16 +70,20 @@
   var button2 = document.getElementById( 'HtmlButton2' );
   var button3 = document.getElementById( 'HtmlButton3' );
   var button4 = document.getElementById( 'HtmlButton4' );
+  var button5 = document.getElementById( 'HtmlButton5' );
+  var button6 = document.getElementById( 'HtmlButton6' );
 
   button1.className = 'active'
   button2.className = 'active'
-  button3.className = 'inactive'
+  button3.className = 'active'
   button4.className = 'inactive'
+  button5.className = 'active'
+  button6.className = 'inactive'
 
 	mapboxgl.accessToken = 'pk.eyJ1Ijoicmljcm9jIiwiYSI6ImNpanZyajMxYTBhdmZ0dG01bmVsbG8ybzcifQ.RdmNKeWGLY_fqRmUrM9m4w';
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/ricroc/cmljh63qj004001sk5a0s504f',
+        style: 'mapbox://styles/ricroc/cmlmaoaxp000u01sc15avei1l',
         center: [10.4822,45.1045],
         zoom: 15
     });
@@ -108,7 +114,7 @@
           'source': 'google-source',
           'paint': {"raster-resampling": "linear"}
         },
-        'Bozzolo mappa 2'
+        'Mappa 2'
       );
       map.setLayoutProperty('Satellitare Google', 'visibility', 'none');
 
@@ -116,47 +122,65 @@
 
     button1.onclick = function () {
       if (button1.className === 'active') {
-        map.setLayoutProperty('Bozzolo mura', 'visibility', 'none');
-        map.setLayoutProperty('Bozzolo fossato', 'visibility', 'none');
+        map.setLayoutProperty('Mura', 'visibility', 'none');
         button1.className = 'inactive';
       } else {
-        map.setLayoutProperty('Bozzolo mura', 'visibility', 'visible');
-        map.setLayoutProperty('Bozzolo fossato', 'visibility', 'visible');
+        map.setLayoutProperty('Mura', 'visibility', 'visible');
         button1.className = 'active';
       }
     };
 
     button2.onclick = function () {
       if (button2.className === 'active') {
-        map.setLayoutProperty('Bozzolo mappa 1', 'visibility', 'none');
+        map.setLayoutProperty('Castello', 'visibility', 'none');
         button2.className = 'inactive';
       } else {
-        map.setLayoutProperty('Bozzolo mappa 1', 'visibility', 'visible');
+        map.setLayoutProperty('Castello', 'visibility', 'visible');
         button2.className = 'active';
-        map.setLayoutProperty('Bozzolo mappa 2', 'visibility', 'none');
-        button3.className = 'inactive';
       }
     };
 
     button3.onclick = function () {
       if (button3.className === 'active') {
-        map.setLayoutProperty('Bozzolo mappa 2', 'visibility', 'none');
+        map.setLayoutProperty('Mappa 1', 'visibility', 'none');
         button3.className = 'inactive';
       } else {
-        map.setLayoutProperty('Bozzolo mappa 2', 'visibility', 'visible');
+        map.setLayoutProperty('Mappa 1', 'visibility', 'visible');
         button3.className = 'active';
-        map.setLayoutProperty('Bozzolo mappa 1', 'visibility', 'none');
-        button2.className = 'inactive';
+        map.setLayoutProperty('Mappa 2', 'visibility', 'none');
+        button4.className = 'inactive';
       }
     };
 
     button4.onclick = function () {
       if (button4.className === 'active') {
-        map.setLayoutProperty('Satellitare Google', 'visibility', 'none');
+        map.setLayoutProperty('Mappa 2', 'visibility', 'none');
         button4.className = 'inactive';
       } else {
-        map.setLayoutProperty('Satellitare Google', 'visibility', 'visible');
+        map.setLayoutProperty('Mappa 2', 'visibility', 'visible');
         button4.className = 'active';
+        map.setLayoutProperty('Mappa 1', 'visibility', 'none');
+        button3.className = 'inactive';
+      }
+    };
+
+    button5.onclick = function () {
+      if (button5.className === 'active') {
+        map.setLayoutProperty('Ortofoto 1954', 'visibility', 'none');
+        button5.className = 'inactive';
+      } else {
+        map.setLayoutProperty('Ortofoto 1954', 'visibility', 'visible');
+        button5.className = 'active';
+      }
+    };
+
+    button6.onclick = function () {
+      if (button6.className === 'active') {
+        map.setLayoutProperty('Satellitare Google', 'visibility', 'none');
+        button6.className = 'inactive';
+      } else {
+        map.setLayoutProperty('Satellitare Google', 'visibility', 'visible');
+        button6.className = 'active';
       }
     };
 
