@@ -43,6 +43,10 @@
     button.active       {background: #b3b3ff; color: #ffffff;}
     button.active:hover {background: #9999ff; color: #ffffff;}
 
+    #HtmlButton0              {font-weight: bold;}
+    #HtmlButton0.active       {background: #ff8080; color: #ffffff;}
+    #HtmlButton0.active:hover {background: #ff6666; color: #ffffff;}
+
   </style>
 
 </head>
@@ -56,6 +60,7 @@
 </style>
 
 <div class="menu">
+  <button id="HtmlButton0">MAPPE</button>
   <button id="HtmlButton1">Mura</button>
   <button id="HtmlButton2">Castello</button>
   <button id="HtmlButton3">Mappa 1</button>
@@ -66,12 +71,14 @@
 
 <div id="map"></div>
 <script>
+  var button0 = document.getElementById( 'HtmlButton0' );
   var button1 = document.getElementById( 'HtmlButton1' );
   var button2 = document.getElementById( 'HtmlButton2' );
   var button3 = document.getElementById( 'HtmlButton3' );
   var button4 = document.getElementById( 'HtmlButton4' );
   var button5 = document.getElementById( 'HtmlButton5' );
   var button6 = document.getElementById( 'HtmlButton6' );
+  HideMaps();
 
   button1.className = 'active'
   button2.className = 'active'
@@ -119,6 +126,14 @@
       map.setLayoutProperty('Satellitare Google', 'visibility', 'none');
 
     });
+
+    button0.onclick = function () {
+      if (button0.className === 'active') {
+        HideMaps();
+      } else {
+        ShowMaps();
+      }
+    };
 
     button1.onclick = function () {
       if (button1.className === 'active') {
@@ -183,6 +198,28 @@
         button6.className = 'active';
       }
     };
+
+    function ShowMaps() {
+      button0.className = 'active';
+      button1.style.display = "block";
+      button2.style.display = "block";
+      button3.style.display = "block";
+      button4.style.display = "block";
+      button5.style.display = "block";
+      button6.style.display = "block";
+      return;
+    }
+
+    function HideMaps() {
+      button0.className = 'inactive';
+      button1.style.display = "none";
+      button2.style.display = "none";
+      button3.style.display = "none";
+      button4.style.display = "none";
+      button5.style.display = "none";
+      button6.style.display = "none";
+      return;
+    }
 
   </script>
 
