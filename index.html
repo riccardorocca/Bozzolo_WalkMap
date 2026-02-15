@@ -137,10 +137,12 @@
 
     button1.onclick = function () {
       if (button1.className === 'active') {
-        map.setLayoutProperty('Mura', 'visibility', 'none');
+        map.setLayoutProperty('Mura esistenti', 'visibility', 'none');
+        map.setLayoutProperty('Mura demolite', 'visibility', 'none');
         button1.className = 'inactive';
       } else {
-        map.setLayoutProperty('Mura', 'visibility', 'visible');
+        map.setLayoutProperty('Mura esistenti', 'visibility', 'visible');
+        map.setLayoutProperty('Mura demolite', 'visibility', 'visible');
         button1.className = 'active';
       }
     };
