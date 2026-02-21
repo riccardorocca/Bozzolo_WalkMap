@@ -11,7 +11,8 @@
 
   <!-- Compare Plugin -->
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
-  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css"/>
+  <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css"/>
 
   <style>
     body {
@@ -47,7 +48,9 @@
   mapboxgl.accessToken =
     "pk.eyJ1Ijoicmljcm9jIiwiYSI6ImNpanZyajMxYTBhdmZ0dG01bmVsbG8ybzcifQ.RdmNKeWGLY_fqRmUrM9m4w";
 
-  // ✅ BEFORE Map (base style)
+  // ============================
+  // BEFORE MAP (Normal View)
+  // ============================
   const beforeMap = new mapboxgl.Map({
     container: "before",
     style: "mapbox://styles/ricroc/cmlmb1s7o005m01se0lakfnn6",
@@ -55,7 +58,9 @@
     zoom: 14
   });
 
-  // ✅ AFTER Map (same style, but with layer turned ON)
+  // ============================
+  // AFTER MAP (Walls View)
+  // ============================
   const afterMap = new mapboxgl.Map({
     container: "after",
     style: "mapbox://styles/ricroc/cmlmb1s7o005m01se0lakfnn6",
@@ -63,18 +68,85 @@
     zoom: 14
   });
 
-  // 🔥 Ensure layer "Mura esistenti" is visible in After Map
-  afterMap.on("load", () => {
-    afterMap.setLayoutProperty("Etichette", "visibility", "none");
-    afterMap.setLayoutProperty("Mura esistenti", "visibility", "none");
-    afterMap.setLayoutProperty("Mura demolite", "visibility", "none");
-    afterMap.setLayoutProperty("Castello", "visibility", "none");
-    afterMap.setLayoutProperty("Mappa 1", "visibility", "none");
-    afterMap.setLayoutProperty("Ortofoto 1954", "visibility", "none");
+  // ============================
+  // Navigation Controls on BOTH
+  // ============================
+  beforeMap.addControl(new mapboxgl.NavigationControl());
+  afterMap.addControl(new mapboxgl.NavigationControl());
+
+  // ============================
+  // ONE Geolocate Control (AFTER only)
+  // ============================
+  const geolocate = new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true
+    },
+    trackUserLocation: true,
+    showUserHeading: true
   });
 
+  // Add the button only on AFTER map
+  afterMap.addControl(geolocate);
+
+  // ============================
+  // Sync Location → BOTH maps
+  // ============================
+  geolocate.on("geolocate", (e) => {
+    const lon = e.coords.longitude;
+    const lat = e.coords.latitude;
+
+    // Move BOTH maps together
+    beforeMap.flyTo({
+      center: [lon, lat],
+      zoom: 16
+    });
+
+    afterMap.flyTo({
+      center: [lon, lat],
+      zoom: 16
+    });
+  });
+
+  // ============================
+  // AFTER MAP Layer Setup
+  // ============================
+  afterMap.on("load", () => {
+
+    // Layers to hide
+    const hiddenLayers = [
+      "Etichette",
+      "Mura demolite",
+      "Castello",
+      "Mappa 1",
+      "Ortofoto 1954"
+    ];
+
+    // Hide unwanted layers safely
+    hiddenLayers.forEach(layer => {
+      if (afterMap.getLayer(layer)) {
+        afterMap.setLayoutProperty(layer, "visibility", "none");
+      }
+    });
+
+    // ✅ Keep walls visible
+    if (afterMap.getLayer("Mura esistenti")) {
+      afterMap.setLayoutProperty(
+        "Mura esistenti",
+        "visibility",
+        "visible"
+      );
+    }
+  });
+
+  // ============================
   // Swipe Compare Tool
-  new mapboxgl.Compare(beforeMap, afterMap, "#comparison-container");
+  // ============================
+  new mapboxgl.Compare(
+    beforeMap,
+    afterMap,
+    "#comparison-container"
+  );
+
 </script>
 
 </body>
