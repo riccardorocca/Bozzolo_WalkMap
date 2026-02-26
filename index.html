@@ -131,6 +131,60 @@
       );
       map.setLayoutProperty('Satellitare Google', 'visibility', 'none');
 
+      map.loadImage('https://riccardorocca.github.io/Piacenza_WalkMap/star_red.png', function (error, image) {if (error) throw error; map.addImage('star_red', image)});
+
+      map.addSource('chiese', {
+        'type': 'geojson',
+        'data': {
+          'type': 'FeatureCollection',
+          'features': [
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.467581, 45.111855]},'properties':{'icon':'star_red','url':'https://parrocchiabozzolo.weebly.com/abbazia-s-maria-della-gironda.html','title':"Abbazia di<br>Santa Maria della Gironda"}},
+          ]
+        }
+      });
+
+      map.addLayer({
+        'id': 'chiese',
+        'type': 'symbol',
+        'source': 'chiese',
+        'layout': {
+            'icon-image': ['get','icon'],
+            'icon-allow-overlap': true
+        }
+      });
+      map.setLayoutProperty('chiese', 'visibility', 'block');
+
+      map.on('click', 'chiese', function (e) {
+          var coordinates = e.features[0].geometry.coordinates.slice();
+          var url = e.features[0].properties.url;
+          var title = e.features[0].properties.title;
+
+          // Ensure that if the map is zoomed out such that multiple
+          // copies of the feature are visible, the popup appears
+          // over the copy being pointed to.
+          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        if (url === "") {HTMLtext = '<p style="text-align:center">' + title + '</p>'}
+        else {HTMLtext = '<a href="'+ url + '" target="_blank"> <p style="text-align:center">' + title + '</p> </a>'};
+
+        new mapboxgl.Popup({closeButton: false})
+        .setLngLat(coordinates)
+        .setHTML(HTMLtext)
+        .addTo(map);
+      });
+
+      // Change the cursor to a pointer when the mouse is over the places layer.
+      map.on('mouseenter', 'chiese', function () {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
+      // Change it back to a pointer when it leaves.
+      map.on('mouseleave', 'chiese', function () {
+        map.getCanvas().style.cursor = '';
+      });
+
     });
 
     button0.onclick = function () {
