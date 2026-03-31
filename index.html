@@ -66,6 +66,7 @@
   <button id="HtmlButton3">Mappa 1</button>
   <button id="HtmlButton4">Mappa 2</button>
   <button id="HtmlButton5">Ortofoto 1954</button>
+  <button id="HtmlButton9">Bozolo-Tezole 1579</button>
   <button id="HtmlButton6">Topografia</button>
   <button id="HtmlButton7">Geomorfologia</button>
   <button id="HtmlButton8">Vista Satellitare</button>
@@ -82,6 +83,7 @@
   var button6 = document.getElementById( 'HtmlButton6' );
   var button7 = document.getElementById( 'HtmlButton7' );
   var button8 = document.getElementById( 'HtmlButton8' );
+  var button9 = document.getElementById( 'HtmlButton9' );
   HideMaps();
 
   button1.className = 'active'
@@ -89,6 +91,7 @@
   button3.className = 'active'
   button4.className = 'inactive'
   button5.className = 'active'
+  button9.className = 'active'
   button6.className = 'active'
   button7.className = 'inactive'
   button8.className = 'inactive'
@@ -254,6 +257,16 @@
       }
     };
 
+    button9.onclick = function () {
+      if (button9.className === 'active') {
+        map.setLayoutProperty('Bozolo-Tezole 1579', 'visibility', 'none');
+        button9.className = 'inactive';
+      } else {
+        map.setLayoutProperty('Bozolo-Tezole 1579', 'visibility', 'visible');
+        button9.className = 'active';
+      }
+    };
+
     button6.onclick = function () {
       if (button6.className === 'active') {
         map.setLayoutProperty('Topografia', 'visibility', 'none');
@@ -294,6 +307,7 @@
       button6.style.display = "block";
       button7.style.display = "block";
       button8.style.display = "block";
+      button9.style.display = "block";
       return;
     }
 
@@ -307,6 +321,7 @@
       button6.style.display = "none";
       button7.style.display = "none";
       button8.style.display = "none";
+      button9.style.display = "none";
       return;
     }
 
