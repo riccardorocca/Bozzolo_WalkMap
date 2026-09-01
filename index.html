@@ -46,8 +46,10 @@
     #HtmlButton0              {font-weight: bold;}
     #HtmlButton0.active       {background: #ff8080; color: #ffffff;}
     #HtmlButton0.active:hover {background: #ff6666; color: #ffffff;}
-    
+
     .mapboxgl-popup-content {
+        max-width: 400px;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
         padding: 0px 10px;
     }
   </style>
@@ -55,17 +57,10 @@
 </head>
 
 <body>
-<style>
-  .mapboxgl-popup {
-    max-width: 400px;
-    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  }
-</style>
-
 <div class="menu">
   <button id="HtmlButton0">MAPPE</button>
   <button id="HtmlButton1"><img src="https://riccardorocca.github.io/Bozzolo_WalkMap/mura.png"></button>
-  <button id="HtmlButton11">Segnaposto</button>
+  <button id="HtmlButton11"><img src="https://riccardorocca.github.io/Bozzolo_WalkMap/segnaposto.png"></button>
   <button id="HtmlButton2">Castello</button>
   <button id="HtmlButton3">Planimetria</button>
   <button id="HtmlButton10">Planimetria 1796</button>
@@ -142,15 +137,38 @@
       );
       map.setLayoutProperty('Satellitare Google', 'visibility', 'none');
 
-      map.loadImage('https://riccardorocca.github.io/Piacenza_WalkMap/star_red.png', function (error, image) {if (error) throw error; map.addImage('star_red', image)});
+      map.loadImage('https://riccardorocca.github.io/Bozzolo_WalkMap/circle_red.png', function (error, image) {if (error) throw error; map.addImage('circle_red', image)});
+      map.loadImage('https://riccardorocca.github.io/Bozzolo_WalkMap/circle_blue.png', function (error, image) {if (error) throw error; map.addImage('circle_blue', image)});
+      map.loadImage('https://riccardorocca.github.io/Bozzolo_WalkMap/circle_green.png', function (error, image) {if (error) throw error; map.addImage('circle_green', image)});
 
       map.addSource('stelline', {
         'type': 'geojson',
         'data': {
           'type': 'FeatureCollection',
           'features': [
-            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.467615, 45.111123]},'properties':{'icon':'star_red','url':'https://parrocchiabozzolo.weebly.com/abbazia-s-maria-della-gironda.html','title':"Abbazia di<br>Santa Maria<br>della Gironda"}},
-            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.503694, 45.126685]},'properties':{'icon':'star_red','url':'https://www.oglioponews.it/2023/11/28/bozzolo-parco-oglio-sud-ha-acquistato-cascina-tezzoglio/','title':"Cascina<br>Tezzoglio"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.467615, 45.111123]},'properties':{'icon':'circle_green','url':'https://parrocchiabozzolo.weebly.com/abbazia-s-maria-della-gironda.html','title':"Abbazia di<br>Santa Maria<br>della Gironda"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.503694, 45.126685]},'properties':{'icon':'circle_red','url':'https://www.oglioponews.it/2023/11/28/bozzolo-parco-oglio-sud-ha-acquistato-cascina-tezzoglio/','title':"Cascina<br>Tezzoglio"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.477253, 45.107176]},'properties':{'icon':'circle_red','url':'','title':"Porta<br>Cremona"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.490118, 45.103492]},'properties':{'icon':'circle_red','url':'','title':"Porta<br>Mantova"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.485411, 45.101276]},'properties':{'icon':'circle_red','url':'','title':"Porta<br>Parma"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.483298, 45.108179]},'properties':{'icon':'circle_red','url':'','title':"Castello<br>(scomparso)"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.488143, 45.105687]},'properties':{'icon':'circle_green','url':'','title':"Chiesa di<br>San Pietro<br>(scomparsa)"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.487171, 45.106019]},'properties':{'icon':'circle_green','url':'','title':"Chiesa delle<br>Monache<br>(scomparsa)"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482242, 45.104965]},'properties':{'icon':'circle_green','url':'','title':"Chiesa della<br>Disciplina"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.480320, 45.105983]},'properties':{'icon':'circle_green','url':'','title':"Chiesa della<br>Santissima<br>Trinità"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482368, 45.106692]},'properties':{'icon':'circle_green','url':'','title':"Chiesa di<br>San Francesco"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.485347, 45.102203]},'properties':{'icon':'circle_green','url':'','title':"Chiesa di<br>San Pietro"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.481303, 45.106941]},'properties':{'icon':'circle_red','url':'','title':"Caserma<br>Bianca"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482115, 45.105481]},'properties':{'icon':'circle_red','url':'','title':"Caserma<br>Nera"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482119, 45.106270]},'properties':{'icon':'circle_red','url':'','title':"Municipio"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482032, 45.106123]},'properties':{'icon':'circle_red','url':'','title':"Monte di<br>Pietà"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.480226, 45.106534]},'properties':{'icon':'circle_red','url':'','title':"Casa<br>Piccioni"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.483530, 45.106307]},'properties':{'icon':'circle_red','url':'','title':"Antica<br>Casa<br>Pasotelli"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482069, 45.107141]},'properties':{'icon':'circle_red','url':'','title':"Teatro<br>Odeon"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482804, 45.104948]},'properties':{'icon':'circle_red','url':'','title':"Casa<br>Casalini"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482523, 45.103680]},'properties':{'icon':'circle_red','url':'','title':"Casa<br>Pasotelli"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.483071, 45.103465]},'properties':{'icon':'circle_red','url':'','title':"Casa<br>Morselli"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.479606, 45.101640]},'properties':{'icon':'circle_red','url':'','title':"Ospedale"}},
           ]
         }
       });
