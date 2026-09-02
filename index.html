@@ -148,7 +148,7 @@
           'features': [
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.467615, 45.111123]},'properties':{'icon':'circle_green','url':'https://parrocchiabozzolo.weebly.com/abbazia-s-maria-della-gironda.html','title':"Abbazia di<br>Santa Maria<br>della Gironda"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.503694, 45.126685]},'properties':{'icon':'circle_red','url':'https://www.oglioponews.it/2023/11/28/bozzolo-parco-oglio-sud-ha-acquistato-cascina-tezzoglio/','title':"Cascina<br>Tezzoglio"}},
-            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.477253, 45.107176]},'properties':{'icon':'circle_red','url':'C:\Users\ricca\Documents\_Models\2026-02 Bozzolo\3D\Municipio 3D texture.mp4','title':"Porta<br>Cremona<br>(de' Capucini)"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.477253, 45.107176]},'properties':{'icon':'circle_red','url':'','title':"Porta<br>Cremona<br>(de' Capucini)"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.490118, 45.103492]},'properties':{'icon':'circle_red','url':'','title':"Porta<br>Mantova<br>(San Martino)"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.485411, 45.101276]},'properties':{'icon':'circle_red','url':'','title':"Porta<br>Parma<br>(Cairoli)"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.483298, 45.108179]},'properties':{'icon':'circle_red','url':'','title':"Castello<br>(scomparso)"}},
@@ -160,7 +160,7 @@
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.485347, 45.102203]},'properties':{'icon':'circle_green','url':'','title':"Chiesa di<br>San Pietro"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.481303, 45.106941]},'properties':{'icon':'circle_red','url':'','title':"Caserma<br>Bianca"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482115, 45.105481]},'properties':{'icon':'circle_red','url':'','title':"Caserma<br>Nera"}},
-            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482119, 45.106270]},'properties':{'icon':'circle_red','url':'','title':"Municipio"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482119, 45.106270]},'properties':{'icon':'circle_red','url':'https://riccardorocca.github.io/Bozzolo_WalkMap/Municipio%203D%20texture.mp4','title':"Municipio"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482032, 45.106123]},'properties':{'icon':'circle_red','url':'','title':"Monte di<br>Pietà"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.480226, 45.106534]},'properties':{'icon':'circle_red','url':'','title':"Casa<br>Piccioni"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.483530, 45.106307]},'properties':{'icon':'circle_red','url':'','title':"Antica<br>Casa<br>Pasotelli"}},
@@ -198,7 +198,7 @@
 
         if (url === "") {HTMLtext = '<p style="text-align:center">' + title + '</p>'}
         //else {HTMLtext = '<a href="'+ url + '" target="_blank"> <p style="text-align:center">' + title + '</p> </a>'};
-        else {<a href="' + url + '" target="_blank"> <p style="text-align:center">' + title + '</p> </a>};
+        else {HTMLtext = '<a href="' + url + '" target="_blank"> <p style="text-align:center">' + title + '</p> </a>'};
 
         new mapboxgl.Popup({closeButton: false})
         .setLngLat(coordinates)
