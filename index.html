@@ -61,6 +61,7 @@
   <button id="HtmlButton0">MAPPE</button>
   <button id="HtmlButton1"><img src="https://riccardorocca.github.io/Bozzolo_WalkMap/mura.png"></button>
   <button id="HtmlButton11"><img src="https://riccardorocca.github.io/Bozzolo_WalkMap/segnaposto.png"></button>
+  <button id="HtmlButton12">Zone storiche</button>
   <button id="HtmlButton2">Castello</button>
   <button id="HtmlButton3">Planimetria</button>
   <button id="HtmlButton10">Planimetria 1796</button>
@@ -77,6 +78,7 @@
   var button0 = document.getElementById( 'HtmlButton0' );
   var button1 = document.getElementById( 'HtmlButton1' );
   var button11 = document.getElementById( 'HtmlButton11' );
+  var button12 = document.getElementById( 'HtmlButton12' );
   var button2 = document.getElementById( 'HtmlButton2' );
   var button3 = document.getElementById( 'HtmlButton3' );
   var button10 = document.getElementById( 'HtmlButton10' );
@@ -90,6 +92,7 @@
 
   button1.className = 'active'
   button11.className = 'active'
+  button12.className = 'inactive'
   button2.className = 'inactive'
   button3.className = 'active'
   button10.className = 'inactive'
@@ -170,8 +173,8 @@
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.483071, 45.103465]},'properties':{'icon':'circle_red','url':'','title':"Casa<br>Morselli"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.481710, 45.106526]},'properties':{'icon':'circle_red','url':'https://riccardorocca.github.io/Bozzolo_WalkMap/Casa%20Tomasina.mp4','title':"Casa<br>Tomasina<br>(scomparsa)<br>3D"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.479606, 45.101640]},'properties':{'icon':'circle_red','url':'','title':"Ospedale"}},
-            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.474725, 45.105767]},'properties':{'icon':'circle_red','url':'','title':"Cimitero"}},
-            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.474340, 45.108643]},'properties':{'icon':'circle_red','url':'','title':"Cimitero<br>Ebraico"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.474725, 45.105767]},'properties':{'icon':'circle_green','url':'','title':"Cimitero"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.474340, 45.108643]},'properties':{'icon':'circle_green','url':'','title':"Cimitero<br>Ebraico"}},
           ]
         }
       });
@@ -250,6 +253,16 @@
       }
     };
 
+    button12.onclick = function () {
+      if (button12.className === 'active') {
+        map.setLayoutProperty('Zone storiche', 'visibility', 'none');
+        button12.className = 'inactive';
+      } else {
+        map.setLayoutProperty('Zone storiche', 'visibility', 'visible');
+        button12.className = 'active';
+      }
+    };
+
     button2.onclick = function () {
       if (button2.className === 'active') {
         map.setLayoutProperty('Castello', 'visibility', 'none');
@@ -267,10 +280,6 @@
       } else {
         map.setLayoutProperty('Planimetria.', 'visibility', 'visible');
         button3.className = 'active';
-        map.setLayoutProperty('Planimetria 1796', 'visibility', 'none');
-        button10.className = 'inactive';
-        map.setLayoutProperty('Planimetria 1776', 'visibility', 'none');
-        button4.className = 'inactive';
       }
     };
 
@@ -281,10 +290,6 @@
       } else {
         map.setLayoutProperty('Planimetria 1796', 'visibility', 'visible');
         button10.className = 'active';
-        map.setLayoutProperty('Planimetria.', 'visibility', 'none');
-        button3.className = 'inactive';
-        map.setLayoutProperty('Planimetria 1776', 'visibility', 'none');
-        button4.className = 'inactive';
       }
     };
 
@@ -295,10 +300,6 @@
       } else {
         map.setLayoutProperty('Planimetria 1776', 'visibility', 'visible');
         button4.className = 'active';
-        map.setLayoutProperty('Planimetria.', 'visibility', 'none');
-        button3.className = 'inactive';
-        map.setLayoutProperty('Planimetria 1796', 'visibility', 'none');
-        button10.className = 'inactive';
       }
     };
 
@@ -365,6 +366,7 @@
       button9.style.display = "block";
       button10.style.display = "block";
       button11.style.display = "block";
+      button12.style.display = "block";
       return;
     }
 
@@ -381,6 +383,7 @@
       button9.style.display = "none";
       button10.style.display = "none";
       button11.style.display = "none";
+      button12.style.display = "none";
       return;
     }
 
