@@ -29,13 +29,12 @@
     button {
         display: block;
         margin: 0;
-        padding: 0;
-        padding: 5px;
+        padding: 0px;
         text-decoration: none;
         border-bottom: 1px solid rgba(0,0,0,0.25);
         text-align: center;
         width: 100%;
-        height: 50px;
+        height: 45px;
     }
 
     button              {background: #ffffff; color: #404040;}
@@ -68,7 +67,7 @@
   <button id="HtmlButton4">Planimetria 1776</button>
   <button id="HtmlButton5">Ortofoto 1954</button>
   <button id="HtmlButton9">Mappa 1774</button>
-  <button id="HtmlButton6">Altimetria</button>
+  <button id="HtmlButton6">Topografia</button>
   <button id="HtmlButton7">Geomorfologia</button>
   <button id="HtmlButton8">Vista Satellitare</button>
 </div>
@@ -146,7 +145,7 @@
       map.loadImage('https://riccardorocca.github.io/Bozzolo_WalkMap/3D_red.png', function (error, image) {if (error) throw error; map.addImage('3D_red', image)});
       map.loadImage('https://riccardorocca.github.io/Bozzolo_WalkMap/3D_green.png', function (error, image) {if (error) throw error; map.addImage('3D_green', image)});
 
-      map.addSource('stelline', {
+      map.addSource('segnaposto', {
         'type': 'geojson',
         'data': {
           'type': 'FeatureCollection',
@@ -182,17 +181,17 @@
       });
 
       map.addLayer({
-        'id': 'stelline',
+        'id': 'segnaposto',
         'type': 'symbol',
-        'source': 'stelline',
+        'source': 'segnaposto',
         'layout': {
             'icon-image': ['get','icon'],
             'icon-allow-overlap': true
         }
       });
-      map.setLayoutProperty('stelline', 'visibility', 'visible');
+      map.setLayoutProperty('segnaposto', 'visibility', 'visible');
 
-      map.on('click', 'stelline', function (e) {
+      map.on('click', 'segnaposto', function (e) {
           var coordinates = e.features[0].geometry.coordinates.slice();
           var url = e.features[0].properties.url;
           var title = e.features[0].properties.title;
@@ -214,12 +213,12 @@
       });
 
       // Change the cursor to a pointer when the mouse is over the places layer.
-      map.on('mouseenter', 'stelline', function () {
+      map.on('mouseenter', 'segnaposto', function () {
         map.getCanvas().style.cursor = 'pointer';
       });
 
       // Change it back to a pointer when it leaves.
-      map.on('mouseleave', 'stelline', function () {
+      map.on('mouseleave', 'segnaposto', function () {
         map.getCanvas().style.cursor = '';
       });
 
@@ -247,10 +246,10 @@
 
     button11.onclick = function () {
       if (button11.className === 'active') {
-        map.setLayoutProperty('stelline', 'visibility', 'none');
+        map.setLayoutProperty('segnaposto', 'visibility', 'none');
         button11.className = 'inactive';
       } else {
-        map.setLayoutProperty('stelline', 'visibility', 'visible');
+        map.setLayoutProperty('segnaposto', 'visibility', 'visible');
         button11.className = 'active';
       }
     };
