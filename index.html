@@ -160,7 +160,7 @@
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.485347, 45.102203]},'properties':{'icon':'circle_green','url':'','title':"Chiesa di<br>San Pietro"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.481303, 45.106941]},'properties':{'icon':'circle_red','url':'','title':"Caserma<br>Bianca"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482115, 45.105481]},'properties':{'icon':'circle_red','url':'','title':"Caserma<br>Nera"}},
-            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482119, 45.106270]},'properties':{'icon':'circle_red','url':'https://riccardorocca.github.io/Bozzolo_WalkMap/Municipio%203D%20texture.mp4','title':"Municipio"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482119, 45.106270]},'properties':{'icon':'circle_red','url':'https://riccardorocca.github.io/Bozzolo_WalkMap/Municipio%203D%20texture.mp4','title':"Municipio<br>3D"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.482032, 45.106123]},'properties':{'icon':'circle_red','url':'','title':"Monte di<br>Pietà"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.480226, 45.106534]},'properties':{'icon':'circle_red','url':'','title':"Casa<br>Piccioni"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.483530, 45.106307]},'properties':{'icon':'circle_red','url':'','title':"Antica<br>Casa<br>Pasotelli"}},
@@ -197,7 +197,6 @@
         }
 
         if (url === "") {HTMLtext = '<p style="text-align:center">' + title + '</p>'}
-        //else {HTMLtext = '<a href="'+ url + '" target="_blank"> <p style="text-align:center">' + title + '</p> </a>'};
         else {HTMLtext = '<a href="' + url + '" target="_blank"> <p style="text-align:center">' + title + '</p> </a>'};
 
         new mapboxgl.Popup({closeButton: false})
