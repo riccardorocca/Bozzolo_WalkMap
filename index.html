@@ -66,8 +66,8 @@
   <button id="HtmlButton10">Planimetria 1796</button>
   <button id="HtmlButton4">Planimetria 1776</button>
   <button id="HtmlButton5">Ortofoto 1954</button>
-  <button id="HtmlButton9">Territorio 1774</button>
-  <button id="HtmlButton6">Topografia</button>
+  <button id="HtmlButton9">Mappa 1774</button>
+  <button id="HtmlButton6">Altimetria</button>
   <button id="HtmlButton7">Geomorfologia</button>
   <button id="HtmlButton8">Vista Satellitare</button>
 </div>
@@ -170,6 +170,8 @@
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.483071, 45.103465]},'properties':{'icon':'circle_red','url':'','title':"Casa<br>Morselli"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.481710, 45.106526]},'properties':{'icon':'circle_red','url':'https://riccardorocca.github.io/Bozzolo_WalkMap/Casa%20Tomasina.mp4','title':"Casa<br>Tomasina<br>(scomparsa)<br>3D"}},
             {'type':'Feature','geometry':{'type':'Point','coordinates':[10.479606, 45.101640]},'properties':{'icon':'circle_red','url':'','title':"Ospedale"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.474725, 45.105767]},'properties':{'icon':'circle_red','url':'','title':"Cimitero"}},
+            {'type':'Feature','geometry':{'type':'Point','coordinates':[10.474340, 45.108643]},'properties':{'icon':'circle_red','url':'','title':"Cimitero<br>Ebraico"}},
           ]
         }
       });
@@ -312,20 +314,20 @@
 
     button9.onclick = function () {
       if (button9.className === 'active') {
-        map.setLayoutProperty('Territorio 1774', 'visibility', 'none');
+        map.setLayoutProperty('Mappa 1774', 'visibility', 'none');
         button9.className = 'inactive';
       } else {
-        map.setLayoutProperty('Territorio 1774', 'visibility', 'visible');
+        map.setLayoutProperty('Mappa 1774', 'visibility', 'visible');
         button9.className = 'active';
       }
     };
 
     button6.onclick = function () {
       if (button6.className === 'active') {
-        map.setLayoutProperty('Topografia', 'visibility', 'none');
+        map.setLayoutProperty('Altimetria', 'visibility', 'none');
         button6.className = 'inactive';
       } else {
-        map.setLayoutProperty('Topografia', 'visibility', 'visible');
+        map.setLayoutProperty('Altimetria', 'visibility', 'visible');
         button6.className = 'active';
       }
     };
